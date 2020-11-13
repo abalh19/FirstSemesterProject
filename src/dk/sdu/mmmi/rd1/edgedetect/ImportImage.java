@@ -22,7 +22,7 @@ public class ImportImage
                
                 
             } else {
-                return "E";
+                return "End";
             }
         }
         
