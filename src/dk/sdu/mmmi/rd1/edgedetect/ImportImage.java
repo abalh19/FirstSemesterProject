@@ -47,19 +47,18 @@ public class ImportImage
         int new_width = original_width;
         int new_height = original_height;
 
-        //Først tjekker vi, om bredden skal skaleres
+       
         if (original_width > bound_width) {
-            //Bredden skaleres til at passe ind på det ønskede lærred
+           
             new_width = bound_width;
-            //Så skalerer vi højden for at bibeholde billedeformatet
+         
             new_height = (new_width * original_height) / original_width;
         }
 
-        //Så tjekker vi, om der er behov for at skalerer den nye højde, som vi lige har fået
         if (new_height > bound_height) {
-            //Højden skaleres til det ønskede billedeformat
+          
             new_height = bound_height;
-            //Vi skalerer bredden for at bibeholde billedeformatet
+          
             new_width = (new_height * original_width) / original_height;
         }
 
@@ -73,10 +72,10 @@ public class ImportImage
     public static void main(String[] args)
     {
         File input = new File("D:\\funny.png");
-        //Vi opretter en instans af klassen UploadImage, så vores metode ovenfor ikke behøves at vores static.
+       
         ImportImage importImage = new ImportImage();
         
-        //Herinde læses billedet, som er importeret ovenfor, billedet skaleres og exporteres til en ny fil.
+        
         try
         {
             BufferedImage image = ImageIO.read(input);
@@ -84,7 +83,7 @@ public class ImportImage
             File output = new File("D:\\TegnerobotResized.jpg");
             ImageIO.write(resized, "jpg", output);
         }
-        //Der er mulighed for, at der kan komme to exceptions, så vi laver en catch til hver exception.
+        
         catch(IllegalArgumentException e)
         {
             System.out.println("Illegal Argument Exception - Input is null. Choose a different file");    
@@ -94,13 +93,13 @@ public class ImportImage
             System.out.println("Wrong input file or output destination");
         }         
               
-        //Vi laver et edgeDetecter objekt af mit billede med billedet, som vi lige har skaleret.
+       
         EdgeDetector edge = new EdgeDetector("D:\\TegnerobotResized.jpg");
         
         
 
 
-//Vi laver et bufferedImage og et magnitude array af vores EdgeDetector Objekt
+
         BufferedImage after = edge.getBufferedImage();                     
         
         
@@ -110,11 +109,11 @@ public class ImportImage
         int[][] magnitudeImg =edge.getMagnitudeArray();  
         
         
-        //Her angives to variabler til højde og bredde, som bruges i stedet for billedets getter metoder.       
+               
         int height = after.getHeight();
         int width = after.getWidth();       
               
-        //Vi instantierer en tom outputString.
+        
         String outputString = " ";
         
         
